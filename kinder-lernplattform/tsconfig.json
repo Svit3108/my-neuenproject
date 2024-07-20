@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "esnext", // Zielt auf die neueste ECMAScript-Version ab
+    "module": "esnext", // Verwendet das ECMAScript-Modulsystem
+    "strict": true, // Aktiviert strikte Typprüfungen
+    "forceConsistentCasingInFileNames": true, // Erzwingt konsistente Groß- und Kleinschreibung in Dateinamen
+    "moduleResolution": "node", // Verwendet Node.js Module Resolution
+    "esModuleInterop": true, // Ermöglicht die Interoperabilität zwischen CommonJS und ES-Modules
+    "skipLibCheck": true, // Überspringt die Typprüfung von .d.ts-Dateien
+    "jsx": "preserve", // Beibehaltung von JSX
+    "sourceMap": true, // Erzeugt Source-Maps
+    "baseUrl": ".", // Basis-URL für das Projekt
+    "paths": {
+      "@/*": ["src/*"] // Alias für den src-Ordner
+    }
+  },
+  "include": [
+    "src/**/*" // Beinhaltet alle Dateien im src-Ordner
+  ],
+  "exclude": [
+    "node_modules" // Schließt den node_modules-Ordner aus
+  ]
+}
