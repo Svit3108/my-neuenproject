@@ -1,45 +1,119 @@
 <template>
-    <div class="flex flex-col items-center justify-center h-screen">
-      <h2 class="text-2xl font-bold mb-4">Register</h2>
-      <form @submit.prevent="handleSubmit" class="w-80 bg-white p-6 rounded shadow-md dark:bg-gray-800">
-        <div class="mb-4">
-          <label class="block text-gray-700 dark:text-gray-300">Username</label>
-          <input type="text" v-model="username" class="w-full p-2 border border-gray-300 rounded mt-1 dark:bg-gray-700 dark:text-gray-300" />
+  <div class="register-container">
+    <div class="register-form">
+      <h2 class="title">Register</h2>
+      <form @submit.prevent="register">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input v-model="username" id="username" type="text" placeholder="Enter your username" required />
         </div>
-        <div class="mb-4">
-          <label class="block text-gray-700 dark:text-gray-300">Email</label>
-          <input type="email" v-model="email" class="w-full p-2 border border-gray-300 rounded mt-1 dark:bg-gray-700 dark:text-gray-300" />
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input v-model="password" id="password" type="password" placeholder="Enter your password" required />
         </div>
-        <div class="mb-4">
-          <label class="block text-gray-700 dark:text-gray-300">Password</label>
-          <input type="password" v-model="password" class="w-full p-2 border border-gray-300 rounded mt-1 dark:bg-gray-700 dark:text-gray-300" />
-        </div>
-        <button type="submit" class="w-full bg-green-500 text-white py-2 rounded">Register</button>
+        <button type="submit" class="submit-button">Register</button>
+        <p class="switch-link">Already have an account? <router-link to="/login" class="link">Login here</router-link></p>
       </form>
     </div>
-  </template>
-  
-  <script>
-  import { ref } from 'vue';
-  
-  export default {
-    setup() {
-      const username = ref('');
-      const email = ref('');
-      const password = ref('');
-  
-      const handleSubmit = () => {
-        // Füge hier die Registrierungslogik hinzu
-        console.log('Register:', username.value, email.value, password.value);
-      };
-  
-      return {
-        username,
-        email,
-        password,
-        handleSubmit,
-      };
-    },
-  };
-  </script>
-  
+  </div>
+</template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      username: '',
+      password: ''
+    };
+  },
+  methods: {
+    async register() {
+      try {
+        await axios.post('http://localhost:5000/api/users/register', {
+          username: this.username,
+          password: this.password
+        });
+        alert('Registration successful');
+        this.$router.push('/login');
+      } catch (error) {
+        console.error('Error registering:', error);
+        alert('Registration failed');
+      }
+    }
+  }
+};
+</script>
+
+<style scoped>
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to right, #fbc2eb, #a6c0fe);
+}
+
+.register-form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  background: #28a745;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background: #218838;
+}
+
+.switch-link {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.switch-link .link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.switch-link .link:hover {
+  text-decoration: underline;
+}
+</style>
