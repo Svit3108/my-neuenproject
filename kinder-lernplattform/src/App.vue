@@ -39,4 +39,5 @@ export default {
 
 <style>
 @import './index.css';
+/* Globale Stile, falls benötigt */
 </style>

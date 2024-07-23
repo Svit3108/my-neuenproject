@@ -1,23 +1,25 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
     "moduleResolution": "node",
-    "strict": true,
-    "jsx": "preserve",
-    "importHelpers": true,
-    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2018", "dom"],
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "useDefineForClassFields": true
+    "strict": true,
+    "forceConsistentCasingInFileNames": true // Füge diese Zeile hinzu
   },
+  "exclude": [
+    "node_modules",
+    "test.ts",
+    "**/*.spec.ts"
+  ],
   "include": [
     "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
-},
+    "src/**/*.d.ts"
+  ]
+}

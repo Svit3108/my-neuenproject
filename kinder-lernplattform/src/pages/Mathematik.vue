@@ -100,17 +100,15 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
 .math-page {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   text-align: center;
   padding: 20px;
-  background: linear-gradient(135deg, #f7f7f7, #e0e0e0);
+  background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
 }
 
 .header {
-  background: #2c3e50; /* Dunkles Blau-Grau */
+  background: #34495e;
   color: white;
   padding: 20px;
   border-radius: 12px;
@@ -122,13 +120,11 @@ export default {
 .header h1 {
   font-size: 3.5rem;
   margin: 0;
-  color: #ecf0f1; /* Hellgrau für bessere Lesbarkeit */
 }
 
 .header p {
   font-size: 1.6rem;
   margin: 0;
-  color: #bdc3c7; /* Etwas helleres Grau für den Text */
 }
 
 .categories {
@@ -163,19 +159,19 @@ export default {
   height: 120px;
   transform-style: preserve-3d;
   transform: rotateX(0deg) rotateY(0deg);
-  animation: rotate 8s infinite linear;
+  animation: rotate 8s infinite linear, color-change 5s infinite alternate;
 }
 
 .cube.algebra {
-  background: #e74c3c; /* Rot */
+  background: #e74c3c;
 }
 
 .cube.geometry {
-  background: #27ae60; /* Grün */
+  background: #27ae60;
 }
 
 .cube.advanced {
-  background: #2980b9; /* Blau */
+  background: #2980b9;
 }
 
 .face {
@@ -184,12 +180,12 @@ export default {
   height: 120px;
   background: rgba(255, 255, 255, 0.8);
   border: 1px solid #ccc;
-  color: #2c3e50; /* Dunkles Blau-Grau für Text */
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem; /* Größere Schrift für Emojis */
-  font-weight: 700;
+  font-weight: 600;
   text-align: center;
   line-height: 1.2;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
@@ -205,8 +201,7 @@ export default {
 
 .category:hover .face {
   transform: scale(1.2); /* Vergrößert die Emojis beim Hover */
-  background-color: rgba(255, 255, 255, 0.9); /* Leicht aufgehellter Hintergrund beim Hover */
-  color: #34495e; /* Dunklerer Textfarbe für besseren Kontrast */
+  color: #fff; /* Weißer Text für besseren Kontrast */
 }
 
 @keyframes rotate {
@@ -220,19 +215,19 @@ export default {
 
 @keyframes color-change {
   0% {
-    background-color: #3498db; /* Blau */
+    background-color: #3498db;
   }
   25% {
-    background-color: #e74c3c; /* Rot */
+    background-color: #e74c3c;
   }
   50% {
-    background-color: #f39c12; /* Gelb */
+    background-color: #f39c12;
   }
   75% {
-    background-color: #2ecc71; /* Grün */
+    background-color: #2ecc71;
   }
   100% {
-    background-color: #9b59b6; /* Lila */
+    background-color: #9b59b6;
   }
 }
 
@@ -268,5 +263,4 @@ export default {
   transform: scale(1.05);
 }
 </style>
-
 
