@@ -26,18 +26,14 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-      working-directory: ./*
 
     - name: Run tests
       run: npm test
-      working-directory: ./*
 
     - name: Build project
       run: npm run build
-      working-directory: ./*
 
     - name: Deploy (optional)
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: echo "Deploying..."
       # Hier können Sie Ihre spezifischen Deploy-Schritte hinzufügen
-      working-directory: ./*
