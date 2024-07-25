@@ -24,23 +24,20 @@ jobs:
       with:
         node-version: '16'
 
-    - name: Change directory to frontend
-      run: cd frontend
-
     - name: Install dependencies
       run: npm install
       working-directory: ./frontend
 
     - name: Run tests
       run: npm test
-      working-directory: ./frontend
+      working-directory: ./*
 
     - name: Build project
       run: npm run build
-      working-directory: ./frontend
+      working-directory: ./*
 
     - name: Deploy (optional)
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: echo "Deploying..."
       # Hier können Sie Ihre spezifischen Deploy-Schritte hinzufügen
-      working-directory: ./frontend
+      working-directory: ./*
